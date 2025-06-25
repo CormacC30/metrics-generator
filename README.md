@@ -25,4 +25,11 @@ It is an instrumented Python-flask application that can be deployed in an opensh
   ```
   
   In which the final number in the endpoint can be adjusted to increase or decrease the number of series generated. i.e. the above command generates 10000 time series.
+
+
+3. In the *Observe > Metrics* window of the OCP Administrator console, You may run PromQL Queries to view the resource consumption on various components from the generated metrics
+
+`sum(container_memory_usage_bytes{namespace=~"openshift-user-workload-monitoring"}) by ( namespace)`
+
+`sum(container_memory_usage_bytes{namespace=~"openshift-user-workload-monitoring"}) by ( namespace)`
   
