@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: metrics-generator-service
+  labels:
+    app: metrics-generator
+    namespace: test
+spec:
+  selector:
+    app: metrics-generator # This matches the 'app' label in your Deployment's pod template
+  ports:
+    - protocol: TCP
+      port: 8080        # The port on which the service will listen
+      targetPort: 8080  # The port your container is listening on (containerPort from Deployment)
+      name: web
+  type: ClusterIP 

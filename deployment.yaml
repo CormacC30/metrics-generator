@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metrics-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metrics-generator
+  template:
+    metadata:
+      labels:
+        app: metrics-generator
+    spec:
+      containers:
+      - name: metrics-generator
+        image: quay.io/rhn-support-ccostell/metrics-generator:v5
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /health 
+            port: 8080  
+            scheme: HTTP 
+          initialDelaySeconds: 10
+          timeoutSeconds: 4
+          periodSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3

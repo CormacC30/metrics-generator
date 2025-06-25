@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: metrics-generator-route
+  labels:
+    app: metrics-generator
+spec:
+  to:
+    kind: Service
+    name: metrics-generator-service # This must match the 'name' of the Service you defined
+    weight: 100
+  port:
+    targetPort: 8080 # This must match the 'port' defined in your Service (or a named port)
+  wildcardPolicy: None

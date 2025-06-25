@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  generation: 1
+  labels:
+    k8s-app: metrics-generator-monitor 
+  managedFields:
+  name: metrics-generator-monitor
+  namespace: test
+spec:
+  endpoints:
+    - interval: 30s
+      port: web
+      scheme: http
+  selector:
+    matchLabels:
+      app: metrics-generator 
