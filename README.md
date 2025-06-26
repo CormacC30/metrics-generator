@@ -12,9 +12,7 @@ It is an instrumented Python-flask application that can be deployed in an opensh
 
   ```
   oc create ns test
-  ```
-
-  ```
+  oc project test
   oc apply -f .
   ```
 
